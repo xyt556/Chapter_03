@@ -5,35 +5,35 @@ namespace Chapter_03
 
 
     #region eg3.1: 类和对象-对象调用方法
-    public class TPoint    //声明类TPoint
-    {
-        int x, y;　　　　　//类的私有字段
+    //public class TPoint    //声明类TPoint
+    //{
+    //    int x, y;　　　　　//类的私有字段
 
-        //public int X
-        //{ get { return x; } }
+    //    //public int X
+    //    //{ get { return x; } }
 
-        public void setpoint(int x1, int y1)
-        { x = x1; y = y1; }
-        public void dispoint()
-        { Console.WriteLine("({0},{1})", x, y); }
-    }
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            TPoint p1 = new TPoint();	// 定义对象p1
-            p1.setpoint(2, 6);
-            //Console.WriteLine(p1.X);
-            //Console.WriteLine(p1.x);
+    //    public void setpoint(int x1, int y1)
+    //    { x = x1; y = y1; }
+    //    public void dispoint()
+    //    { Console.WriteLine("({0},{1})", x, y); }
+    //}
+    //class Program
+    //{
+    //    static void Main(string[] args)
+    //    {
+    //        TPoint p1 = new TPoint();	// 定义对象p1
+    //        p1.setpoint(2, 6);
+    //        //Console.WriteLine(p1.X);
+    //        //Console.WriteLine(p1.x);
 
-            Console.Write("第一个点=>");
-            p1.dispoint();
-            TPoint p2 = new TPoint();	// 定义对象p2
-            p2.setpoint(8, 3);
-            Console.Write("第二个点=>");
-            p2.dispoint();
-        }
-    }
+    //        Console.Write("第一个点=>");
+    //        p1.dispoint();
+    //        TPoint p2 = new TPoint();	// 定义对象p2
+    //        p2.setpoint(8, 3);
+    //        Console.Write("第二个点=>");
+    //        p2.dispoint();
+    //    }
+    //}
 
     #endregion
 
@@ -292,38 +292,43 @@ namespace Chapter_03
     #endregion
 
     #region eg3.9: 静态字段和静态方法
-    //public class Mineral//矿物类
-    //{
-    //    private int sn;//密度
-    //    public static int counter;
-    //    public Mineral()
-    //    {
-    //        sn = counter;
-    //        counter++;
-    //    }
-    //    public static int AddUp(int x, int y)
-    //    {
-    //        return x + y;
-    //    }
-    //    public int GetSN()
-    //    {
-    //        return sn;
-    //    }
-    //}
-    //public class Program
-    //{
-    //    public static void Main()
-    //    {
-    //        Mineral quartz = new Mineral();
-    //        int c = Mineral.AddUp(3, Mineral.counter);
-    //        Console.WriteLine("c={0}, Mineral.counter={1}", c, Mineral.counter);//调用静态方法和静态字段
-    //        Console.WriteLine("object sn={0}", quartz.GetSN());//调用对象的方法
+    public class Mineral//矿物类
+    {
+        private int sn;//密度
+        private static int counter;
 
-    //        Mineral aa = new Mineral();
-    //        Console.WriteLine("Mineral.counter={0}", Mineral.counter);//调用静态方法和静态字段
-    //        Console.WriteLine("object sn={0}", aa.GetSN());//调用对象的方法
-    //    }
-    //}
+        public int Sn { get => sn; set => sn = value; }
+        public static int Counter { get => counter; set => counter = value; }
+
+        public Mineral()
+        {
+            Sn = Counter;
+            Counter++;
+        }
+        public static int AddUp(int x, int y)
+        {
+            return x + y;
+        }
+        public int GetSN()
+        {
+            return Sn;
+        }
+    }
+    public class Program
+    {
+        public static void Main()
+        {
+            Mineral quartz = new Mineral();
+            int c = Mineral.AddUp(3, Mineral.Counter);
+            Console.WriteLine("c={0}, Mineral.counter={1}", c, Mineral.Counter);//调用静态方法和静态字段
+            Console.WriteLine("object sn={0}", quartz.GetSN());//调用对象的方法
+
+            Mineral aa = new Mineral();
+            Console.WriteLine("Mineral.counter={0}", Mineral.Counter);//调用静态方法和静态字段
+            Console.WriteLine("object sn={0}", aa.GetSN());
+            Console.ReadKey();
+        }
+    }
 
     #endregion
 
